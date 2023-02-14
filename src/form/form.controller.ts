@@ -13,8 +13,10 @@ export class FormController {
   constructor(private readonly formService: FormService) {}
 
   @Post()
-  async createForm(@Body() formData: FormType): Promise<FormType> {
-    return this.formService.createForm(formData).catch(() => {
+  async createForm(
+    @Body() formData: FormType,
+  ): Promise<{ message: string; status: number }> {
+    this.formService.createForm(formData).catch(() => {
       throw new HttpException(
         {
           error: 'Email already exists',
@@ -23,5 +25,9 @@ export class FormController {
         HttpStatus.CONFLICT,
       );
     });
+    return {
+      message: 'Form created successfully',
+      status: HttpStatus.CREATED,
+    };
   }
 }
