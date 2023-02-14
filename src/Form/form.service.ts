@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../Prisma/prisma.service';
 import { FormType } from '../@types/formType';
+import { PrismaService } from 'nestjs-prisma';
 
 @Injectable()
 export class FormService {
