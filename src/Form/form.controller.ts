@@ -7,7 +7,10 @@ export class FormController {
   constructor(private readonly formService: FormService) {}
 
   @Post()
-  async createForm(@Body() formData: FormType): Promise<FormType> {
-    return this.formService.createForm(formData);
+  async createForm(@Body() formData: FormType): Promise<{ message: string }> {
+    this.formService.createForm(formData);
+    return {
+      message: 'Form created successfully',
+    };
   }
 }
