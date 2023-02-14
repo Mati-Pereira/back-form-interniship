@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { FormModule } from './Form/form.module';
+import { FormModule } from './form/form.module';
 
 @Module({
   imports: [FormModule],
