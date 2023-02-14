@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from './Prisma/prisma.service';
 import { FormModule } from './Form/form.module';
-import { PrismaModule } from './Prisma/prisma.module';
+import { PrismaModule, PrismaService } from 'nestjs-prisma';
 
 @Module({
-  imports: [FormModule, PrismaModule],
+  imports: [FormModule, PrismaModule.forRoot()],
   controllers: [],
   providers: [PrismaService],
 })
