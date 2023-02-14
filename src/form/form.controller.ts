@@ -20,7 +20,7 @@ export class FormController {
       .then(() => {
         return {
           message: 'Form created successfully',
-          status: HttpStatus.OK,
+          status: HttpStatus.CREATED,
         };
       })
       .catch(() => {
