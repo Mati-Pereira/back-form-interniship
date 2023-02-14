@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { FormController } from './form.controller';
 import { FormService } from './form.service';
-import { PrismaService } from 'nestjs-prisma';
+import { PrismaModule } from 'src/Prisma/prisma.module';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule],
   controllers: [FormController],
-  providers: [FormService, PrismaService],
+  providers: [FormService],
 })
 export class FormModule {}
