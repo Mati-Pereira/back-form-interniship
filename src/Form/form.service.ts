@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../Prisma/prisma.service';
 import { FormType } from '../@types/formType';
 
 @Injectable()
