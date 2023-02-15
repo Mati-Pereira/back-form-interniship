@@ -14,7 +14,7 @@ model Form {
   id        String   @id @default(uuid())
   name      String
   email     String   @unique
-  subject   String
+  message   String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")
 

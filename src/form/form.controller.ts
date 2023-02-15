@@ -23,11 +23,11 @@ export class FormController {
           status: HttpStatus.CREATED,
         };
       })
-      .catch(() => {
+      .catch((err) => {
         throw new HttpException(
           {
-            error: 'Email already exists',
-            status: HttpStatus.CONFLICT,
+            error: err.message,
+            status: err.status,
           },
           HttpStatus.CONFLICT,
         );
