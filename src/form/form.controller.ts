@@ -4,6 +4,7 @@ import {
   Body,
   HttpException,
   HttpStatus,
+  Get,
 } from '@nestjs/common';
 import { FormService } from './form.service';
 import { FormType } from '../@types/formType';
@@ -27,5 +28,11 @@ export class FormController {
         },
       );
     }
+  }
+  @Get()
+  async hello() {
+    return {
+      message: 'The Back is Working',
+    };
   }
 }
