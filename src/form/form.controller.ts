@@ -12,25 +12,20 @@ import { FormType } from '../@types/formType';
 export class FormController {
   constructor(private readonly formService: FormService) {}
   @Post()
-  async createForm(
-    @Body() formData: FormType,
-  ): Promise<{ message: string; status: number }> {
-    return this.formService
-      .createForm(formData)
-      .then(() => {
-        return {
-          message: 'Form created successfully',
-          status: HttpStatus.CREATED,
-        };
-      })
-      .catch((err) => {
-        throw new HttpException(
-          {
-            error: err.message,
-            status: err.status,
-          },
-          HttpStatus.CONFLICT,
-        );
-      });
+  async createForm(@Body() formData: FormType): Promise<FormType> {
+    try {
+      return await this.formService.createForm(formData);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.CONFLICT,
+          error: 'The email is already in use by another user',
+        },
+        HttpStatus.CONFLICT,
+        {
+          cause: error,
+        },
+      );
+    }
   }
 }
